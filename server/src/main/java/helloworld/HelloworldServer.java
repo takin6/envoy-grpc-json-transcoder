@@ -2,10 +2,12 @@ package helloworld;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.ServerInterceptors;
 import io.grpc.protobuf.services.ProtoReflectionService;
 
 import java.io.IOException;
 import java.util.logging.Logger;
+import helloworld.interceptor.*;
 
 public class HelloworldServer {
     private static final Logger logger = Logger.getLogger(HelloworldServer.class.getName());
@@ -17,6 +19,7 @@ public class HelloworldServer {
         int port = 50051;
         server = ServerBuilder.forPort(port)
                 .addService(new HelloworldServiceImpl())
+                .addService(ServerInterceptors.interceptForward(new HelloworldServiceImpl(), new HelloworldInterceptor()))
                 .addService(ProtoReflectionService.newInstance())
                 .build()
                 .start();
