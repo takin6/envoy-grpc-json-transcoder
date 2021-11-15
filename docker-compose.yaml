@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: grpc-transcoder-server:latest
+    container_name: grpc-transcoder-server
+  envoy:
+    image: envoyproxy/envoy:v1.16.1
+    ports:
+      - "9901:9901"
+      - "51051:51051"
+    volumes:
+      - ./protos/helloworld.pb:/etc/envoy/protos/helloworld.pb
+      - ./envoy/envoy.yaml:/etc/envoy/envoy.yaml
+    links:
+      - server
+volumes:
+  data:
+    driver: 'local'

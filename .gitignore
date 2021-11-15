@@ -1,0 +1,4 @@
+.vscode
+/server/build
+/server/.gradle
+/server/bin
