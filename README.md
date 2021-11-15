@@ -30,10 +30,10 @@ docker build ./ -t grpc-json-transcoder-server
 ## Make Sample Reqeust
 ```
 -- get request
-curl localhost:51051/hello/taka  --header 'token: sample-token' -v
+curl localhost:51051/v1/hello/taka  --header 'token: sample-token' -v
 
 -- sample request
-curl -X POST localhost:51051/hello -d '{"name":"taka"}' -v
+curl -X POST localhost:51051/v1/hello -d '{"name":"taka", "weather":"SUNNY"}' -v
 ```
 
 ## Reference

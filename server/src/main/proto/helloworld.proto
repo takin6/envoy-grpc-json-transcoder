@@ -9,14 +9,14 @@ service Greeter {
   // Sends a greeting
   rpc SayHello(HelloRequest) returns (HelloReply) {
     option (google.api.http) = {
-      get: "/hello/{name}"
+      get: "/v1/hello/{name}"
     };
   }
 
   // Sends a greeting
   rpc PostHello(HelloRequest) returns (HelloReply) {
     option (google.api.http) = {
-      post: "/hello"
+      post: "/v1/hello"
       body: "*"
     };
   }
@@ -25,10 +25,26 @@ service Greeter {
 // The request message containing the user's name.
 message HelloRequest {
   string name = 1;
+  Weather weather = 2;
+
+  enum Weather {
+    SUNNY = 0;
+    CLOUDY = 1;
+    WINDY = 2;
+    RAINY = 3;
+  }
 }
 
 // The response message containing the greetings
 message HelloReply {
   string message = 1;
   int64 visitCount = 2;
+  Feeling feeling = 3;
+
+  enum Feeling {
+    EXCELLENT = 0;
+    GOOD = 1;
+    NOT_BAD = 2;
+    BAD = 3;
+  }
 }
