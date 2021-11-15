@@ -16,7 +16,7 @@ public class HelloworldServiceImpl extends GreeterGrpc.GreeterImplBase {
         StreamObserver<Helloworld.HelloReply> responseObserver
     ) {
         logger.info("Say Hello ~ !!");
-        Helloworld.HelloReply reply = Helloworld.HelloReply.newBuilder().setMessage("helloooo").build();
+        Helloworld.HelloReply reply = Helloworld.HelloReply.newBuilder().setMessage("hello " + request.getName()).build();
         responseObserver.onNext(reply);
         responseObserver.onCompleted();
     }

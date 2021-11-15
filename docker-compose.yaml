@@ -4,8 +4,8 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    image: grpc-transcoder-server:latest
-    container_name: grpc-transcoder-server
+    image: grpc-json-transcoder-server:latest
+    container_name: grpc-json-transcoder-server
   envoy:
     image: envoyproxy/envoy:v1.16.1
     ports:
