@@ -9,7 +9,15 @@ service Greeter {
   // Sends a greeting
   rpc SayHello(HelloRequest) returns (HelloReply) {
     option (google.api.http) = {
-      get: "/say/{name}"
+      get: "/hello/{name}"
+    };
+  }
+
+  // Sends a greeting
+  rpc PostHello(HelloRequest) returns (HelloReply) {
+    option (google.api.http) = {
+      post: "/hello"
+      body: "*"
     };
   }
 }
@@ -22,4 +30,5 @@ message HelloRequest {
 // The response message containing the greetings
 message HelloReply {
   string message = 1;
+  int64 visitCount = 2;
 }

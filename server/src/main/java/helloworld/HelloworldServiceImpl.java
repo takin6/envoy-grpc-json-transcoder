@@ -1,22 +1,49 @@
 package helloworld;
 
-import com.google.protobuf.StringValue;
-import com.google.protobuf.StringValueOrBuilder;
-import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
+import java.util.*;
 
 import java.util.logging.Logger;
 
 public class HelloworldServiceImpl extends GreeterGrpc.GreeterImplBase {
     private static final Logger logger = Logger.getLogger(HelloworldServiceImpl.class.getName());
 
+    Map<String, Integer> visitCount = new HashMap<>();
+
     @Override
     public void sayHello(
         Helloworld.HelloRequest request,
         StreamObserver<Helloworld.HelloReply> responseObserver
     ) {
-        logger.info("Say Hello ~ !!");
-        Helloworld.HelloReply reply = Helloworld.HelloReply.newBuilder().setMessage("hello " + request.getName()).build();
+        logger.info("Say Hello~");
+        Helloworld.HelloReply reply = Helloworld.HelloReply
+            .newBuilder()
+            .setMessage("hello " + request.getName())
+            .setVisitCount(visitCount.getOrDefault(request.getName(), 0))
+            .build();
+        responseObserver.onNext(reply);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void postHello(
+        Helloworld.HelloRequest request,
+        StreamObserver<Helloworld.HelloReply> responseObserver
+    ) {
+        String name = request.getName();
+        
+        if (visitCount.containsKey(name)) {
+            visitCount.put(name, visitCount.get(name) + 1);
+        } else {
+            visitCount.put(name, 1);
+        }
+
+        logger.info("visitCount = " + visitCount.get(name));
+        Helloworld.HelloReply reply = Helloworld.HelloReply
+            .newBuilder()
+            .setMessage("hello " + request.getName())
+            .setVisitCount(visitCount.getOrDefault(request.getName(), 0))
+            .build();
         responseObserver.onNext(reply);
         responseObserver.onCompleted();
     }
