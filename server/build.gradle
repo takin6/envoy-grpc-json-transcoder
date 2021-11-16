@@ -54,7 +54,6 @@ sourceSets {
 
 jar {
     manifest {
-        // attributes "Main-Class": "ecommerce.ProductInfoServer"
         attributes "Main-Class": "helloworld.HelloworldServer"
     }
     from {
