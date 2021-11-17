@@ -18,13 +18,19 @@ Envoy --> Envoy : convert to JSON
 Envoy --> User : return JSON Response
 ```
 
+## Preparation
+- Java 11
+- Envoy v1.16.1, Use v3 api
+- Docker
+
 ## How to Run
 
 ### 1. Compiling Proto
 1. Install Protoc 
 
 2. Set GOOGLEAPIS_DIR 
-`GOOGLEAPIS_DIR=/Users/takayuki.inoue/MyWork/gRPC/rest-api-transcoder/protos/util/googleapis`
+`GOOGLEAPIS_DIR=/Users/takayuki.inoue/MyWork/gRPC/envoy-grpc-json-transcoder/protos/util/googleapis`
+`PROTOBUF_DIR=/Users/takayuki.inoue/MyWork/gRPC/envoy-grpc-json-transcoder/protos/util/protobuf`
 
 3. Run Protoc Command
 ```
