@@ -80,7 +80,7 @@ call SayHello
 ```
 
 ### Links
-[gRPC JSON Transcoder (Overview)](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_json_transcoder_filter)
-[gRPC JSON Transcoder (API Reference)](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/grpc_json_transcoder/v3/transcoder.proto.html)
-[Envoy Transcoder Proto](https://github.com/envoyproxy/envoy/blob/7136c3ade0a8366a86621a1a3a63993af5573486/api/envoy/extensions/filters/http/grpc_json_transcoder/v3/transcoder.proto)
-[Writing Proto for grpc transcoding](https://cloud.google.com/endpoints/docs/grpc/transcoding)
+- [gRPC JSON Transcoder (Overview)](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_json_transcoder_filter)
+- [gRPC JSON Transcoder (API Reference)](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/grpc_json_transcoder/v3/transcoder.proto.html)
+- [Envoy Transcoder Proto](https://github.com/envoyproxy/envoy/blob/7136c3ade0a8366a86621a1a3a63993af5573486/api/envoy/extensions/filters/http/grpc_json_transcoder/v3/transcoder.proto)
+- [Writing Proto for grpc transcoding](https://cloud.google.com/endpoints/docs/grpc/transcoding)
